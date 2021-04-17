@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 import * as API from './api'
 
 async function requestResults ( search, callback ) {
-    if ( search.length != 10 ) return;
-    let data = await API.request('lookupNumber', { phone : search  })
-    callback( data.data )
+    if ( search.length < 10) callback(false)
+    else if ( search.length != 10 ) callback([])
+    else {
+        let data = await API.request('lookupNumber', { phone : search  })
+        callback( data.data )
+    }
 }   
 
 function resultListing ( data, click ) {
-    let min = ("" + Math.floor(data['trigger-time'] / 60)).padStart(2,'0')
-    let sec = ("" + Math.floor(data['trigger-time'] % 60)).padStart(2, '0')
+    let hour = ("" + Math.floor(data['trigger-time'] / ( 60 * 60))).padStart(2,'0')
+    let min = ("" + Math.floor((data['trigger-time'] % (60 * 60))/60)).padStart(2, '0')
+    
 
     let textContent = '';
     if (data.rule.type == 'reddit'){
@@ -24,7 +28,7 @@ function resultListing ( data, click ) {
             ({data['phone-number'].substring(0,3)})-{data['phone-number'].substring(3,6)}-{data['phone-number'].substring(6)}
         </div>
         <div className='time'>
-            Sends @ {min} : {sec}
+            Sends @ {hour}:{min}
         </div>
         <div className="textContent">
             {textContent}
@@ -35,7 +39,7 @@ function resultListing ( data, click ) {
 export default () => {
     
     const [text, setText] = useState('')
-    const [results, setResults] = useState([])
+    const [results, setResults] = useState(false)
 
     let classes = ['search']
     if ( text.length > 0 ) classes.push('active')
@@ -50,16 +54,19 @@ export default () => {
         requestResults(text, setResults )
     }
 
+    console.log(results)
+
     return <div>
         <input className={classes.join(' ')} placeholder="Lookup by phone-number" onChange={changeText} />
         <div className="resultsLabel">
             Click to remove a rule
         </div>
-        <div>
+        { results && <div>
             {results.map((v,key)=><div key={key} style={{marginBottom: 20}}>
                 {resultListing(v, () => remove(v.id))}
             </div>)}
-        </div>        
+            {results.length == 0 ? <div>No rules for that number</div> : ''}
+        </div>       } 
         
     </div>
 
