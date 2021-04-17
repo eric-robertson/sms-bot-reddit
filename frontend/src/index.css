@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.search {
+    width: 400px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 3px;
+    border: none;
+    transition: all ease-in-out 0.3s;
+    outline: none;
+}
+
+.active {
+    box-shadow: 7px 10px 15px #b398c3;
+}
+
+.search:hover{
+    background: rgb(243, 243, 243);
+    cursor: pointer;
+}
