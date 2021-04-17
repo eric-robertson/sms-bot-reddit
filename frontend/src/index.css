@@ -33,3 +33,27 @@ code {
     background: rgb(243, 243, 243);
     cursor: pointer;
 }
+
+.numberResult {
+    width: 400px;
+    height: 50px;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    background: #f9f9f9;
+}
+.numberResult:hover{
+    background: rgb(243, 243, 243);
+    cursor: pointer;
+}
+
+.phoneNumber{
+    position: absolute;
+    width: 200px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    left: 10px;
+    top: 10px;
+    text-align: left;
+}

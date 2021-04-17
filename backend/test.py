@@ -2,7 +2,7 @@ from endpoints import createRule
 from endpoints import lookupNumber
 from endpoints import deleteRule
 from endpoints import triggerRules
-from endpoints import Utils
+from endpoints import utils
 
 '''
 createRule.handler( 
@@ -15,9 +15,12 @@ createRule.handler(
             }
         }
     ),'')
+
+'''
+
 createRule.handler(
     {
-        "number" : 9736108434,
+        "number" : '9736108434',
         "time" : 1,
         "payload" : {
             "type" : "reddit",
@@ -26,7 +29,7 @@ createRule.handler(
     }
 )
 
-'''
-
 # 9736108434
-print( triggerRules.handler( 0, timeslice=999999 ) )
+#print( triggerRules.handler( 0, timeslice=999999 ) )
+
+print( lookupNumber.handler({'phone' : "9736108434"}))
