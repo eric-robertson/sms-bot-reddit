@@ -1,30 +1,41 @@
 import React, { useState } from 'react'
 import * as API from './api'
 
-const data = [{"phone-number":"9736108434","trigger-time":1,"id":"e1ec4004c6b34729b819a8ff8a3d3a47","rule":{"type":"reddit","subreddit":"me_irl"}}]
-
 async function requestResults ( search, callback ) {
     if ( search.length != 10 ) return;
     let data = await API.request('lookupNumber', { phone : search  })
     callback( data.data )
 }   
 
-function resultListing ( data ) {
-    return <div className='numberResult'>
+function resultListing ( data, click ) {
+    let min = ("" + Math.floor(data['trigger-time'] / 60)).padStart(2,'0')
+    let sec = ("" + Math.floor(data['trigger-time'] % 60)).padStart(2, '0')
+
+    let textContent = '';
+    if (data.rule.type == 'reddit'){
+        textContent = `Top image from r/${data.rule.subreddit}`
+    }
+    if (data.rule.type == 'raw'){
+        textContent = `Raw message "${data.rule.msg}"`
+    }
+
+    return <div className='numberResult' onMouseUp={click}>
         <div className='phoneNumber' >
-            #{data['phone-number']}
+            ({data['phone-number'].substring(0,3)})-{data['phone-number'].substring(3,6)}-{data['phone-number'].substring(6)}
         </div>
-        <div>
-            {data['trigger-time']}
+        <div className='time'>
+            Sends @ {min} : {sec}
         </div>
-        {JSON.stringify(data)}
+        <div className="textContent">
+            {textContent}
+        </div>
     </div>
 }
 
 export default () => {
     
     const [text, setText] = useState('')
-    const [results, setResults] = useState(data)
+    const [results, setResults] = useState([])
 
     let classes = ['search']
     if ( text.length > 0 ) classes.push('active')
@@ -34,14 +45,22 @@ export default () => {
         requestResults(e.target.value, setResults )
     }
 
-    return <div >
+    let remove = async ( id )=> {
+        await API.request('deleteRule', { id : id  })
+        requestResults(text, setResults )
+    }
+
+    return <div>
         <input className={classes.join(' ')} placeholder="Lookup by phone-number" onChange={changeText} />
+        <div className="resultsLabel">
+            Click to remove a rule
+        </div>
         <div>
-            {results.map((v,key)=><div key={key}>
-                {resultListing(v)}
+            {results.map((v,key)=><div key={key} style={{marginBottom: 20}}>
+                {resultListing(v, () => remove(v.id))}
             </div>)}
         </div>        
-
+        
     </div>
 
 }
