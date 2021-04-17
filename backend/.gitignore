@@ -1,0 +1,4 @@
+endpoints/keys.json
+.serverless
+env
+node_modules

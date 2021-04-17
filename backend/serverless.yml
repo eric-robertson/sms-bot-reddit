@@ -1,0 +1,45 @@
+service: daily-sms
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+
+package:
+  exclude:
+    - node_modules/**
+    - env/**
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
+functions:
+
+  createRule:
+    handler: endpoints/createRule.handler
+    events:
+      - http: POST /createRule
+
+  deleteRule:
+    handler: endpoints/deleteRule.handler
+    events:
+      - http: POST /deleteRule
+
+  lookupNumber:
+    handler: endpoints/lookupNumber.handler
+    events:
+      - http: POST /lookupNumber
+
+  triggerRules:
+    handler: endpoints/triggerRules.handler
+    timeout: 700
+    events:
+      - schedule:
+          rate: rate(15 minutes)
+          enabled: true
