@@ -2,3 +2,4 @@ endpoints/keys.json
 .serverless
 env
 node_modules
+endpoints/__pycache__

@@ -15,17 +15,18 @@ createRule.handler(
             }
         }
     ),'')
-
-
 createRule.handler(
     {
-        "number" : 9085680224,
+        "number" : 9736108434,
         "time" : 1,
         "payload" : {
             "type" : "reddit",
             "subreddit" : 'me_irl'
         }
     }
-)'''
+)
 
+'''
+
+# 9736108434
 print( triggerRules.handler( 0, timeslice=999999 ) )
