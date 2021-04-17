@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sms-bot-reddit/static/css/main.299d5f15.chunk.css",
-    "main.js": "/sms-bot-reddit/static/js/main.0ac2219d.chunk.js",
-    "main.js.map": "/sms-bot-reddit/static/js/main.0ac2219d.chunk.js.map",
-    "runtime-main.js": "/sms-bot-reddit/static/js/runtime-main.bef10664.js",
-    "runtime-main.js.map": "/sms-bot-reddit/static/js/runtime-main.bef10664.js.map",
-    "static/js/2.37281f22.chunk.js": "/sms-bot-reddit/static/js/2.37281f22.chunk.js",
-    "static/js/2.37281f22.chunk.js.map": "/sms-bot-reddit/static/js/2.37281f22.chunk.js.map",
-    "static/js/3.b91a7ede.chunk.js": "/sms-bot-reddit/static/js/3.b91a7ede.chunk.js",
-    "static/js/3.b91a7ede.chunk.js.map": "/sms-bot-reddit/static/js/3.b91a7ede.chunk.js.map",
+    "main.css": "/sms-bot-reddit/static/css/main.19a7a5c3.chunk.css",
+    "main.js": "/sms-bot-reddit/static/js/main.076c1cc0.chunk.js",
+    "main.js.map": "/sms-bot-reddit/static/js/main.076c1cc0.chunk.js.map",
+    "runtime-main.js": "/sms-bot-reddit/static/js/runtime-main.5f0baab3.js",
+    "runtime-main.js.map": "/sms-bot-reddit/static/js/runtime-main.5f0baab3.js.map",
+    "static/js/2.f70e6ea9.chunk.js": "/sms-bot-reddit/static/js/2.f70e6ea9.chunk.js",
+    "static/js/2.f70e6ea9.chunk.js.map": "/sms-bot-reddit/static/js/2.f70e6ea9.chunk.js.map",
+    "static/js/3.ba5cea6a.chunk.js": "/sms-bot-reddit/static/js/3.ba5cea6a.chunk.js",
+    "static/js/3.ba5cea6a.chunk.js.map": "/sms-bot-reddit/static/js/3.ba5cea6a.chunk.js.map",
     "index.html": "/sms-bot-reddit/index.html",
-    "static/css/main.299d5f15.chunk.css.map": "/sms-bot-reddit/static/css/main.299d5f15.chunk.css.map",
-    "static/js/2.37281f22.chunk.js.LICENSE.txt": "/sms-bot-reddit/static/js/2.37281f22.chunk.js.LICENSE.txt"
+    "static/css/main.19a7a5c3.chunk.css.map": "/sms-bot-reddit/static/css/main.19a7a5c3.chunk.css.map",
+    "static/js/2.f70e6ea9.chunk.js.LICENSE.txt": "/sms-bot-reddit/static/js/2.f70e6ea9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.bef10664.js",
-    "static/js/2.37281f22.chunk.js",
-    "static/css/main.299d5f15.chunk.css",
-    "static/js/main.0ac2219d.chunk.js"
+    "static/js/runtime-main.5f0baab3.js",
+    "static/js/2.f70e6ea9.chunk.js",
+    "static/css/main.19a7a5c3.chunk.css",
+    "static/js/main.076c1cc0.chunk.js"
   ]
 }
