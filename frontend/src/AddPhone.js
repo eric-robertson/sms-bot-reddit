@@ -1,12 +1,32 @@
 import React, { useState } from 'react'
+import * as API from './api'
 
-const AddPhone = () => {
-    const [state, setState] = useState({'isAM': true, 'msgType': 'Raw'})
-
+export default () => {
+    const [state, setState] = useState({'isAM': true, 'msgType': 'raw'})
     const handleChange = ({ target }) => setState({ ...state, [target.name]: target.value })
 
-    const submitForm = () => {
-        console.log('Submitting form')
+    const submitForm = async () => {
+        // Calculate number of seconds from hours/mins/am
+        let numHours = (state.isAM === true) ? parseInt(state.hour) : parseInt(state.hour) + 12
+        let numSeconds =  numHours * 60 * 60
+        numSeconds += parseInt(state.minute) * 60
+
+        // Create payload based on reddit/raw type
+        let payload = { type: state.msgType }
+        
+        if (state.msgType === 'raw')
+            payload.msg = state.txtMsg
+        else
+            payload.subreddit = state.txtMsg
+
+        // Make API call
+        let data = await API.request('createRule', {
+            number: state.phoneNum,
+            time: numSeconds,
+            payload
+        })
+
+        console.log('New rule added')
     }
 
     return (
@@ -28,8 +48,8 @@ const AddPhone = () => {
             </label>
 
             <select name="msgType" id="msgType" onChange={handleChange} >
-                <option value="Raw">Raw Message</option>
-                <option value="Subreddit">Subreddit</option>
+                <option value="raw">Raw Message</option>
+                <option value="reddit">Subreddit</option>
             </select>
 
             <label>
@@ -47,5 +67,3 @@ const AddPhone = () => {
         </div>
     )
 }
-
-export default AddPhone
