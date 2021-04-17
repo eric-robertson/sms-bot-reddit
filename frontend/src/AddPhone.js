@@ -11,6 +11,10 @@ export default () => {
         let numSeconds =  numHours * 60 * 60
         numSeconds += parseInt(state.minute) * 60
 
+        let d = new Date();
+        d.setHours(0); d.setMinutes(0); d.setSeconds(numSeconds);
+        numSeconds = d.getUTCHours() * (60 *60) + d.getUTCMinutes() * (60) 
+
         // Create payload based on reddit/raw type
         let payload = { type: state.msgType }
         

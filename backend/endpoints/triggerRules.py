@@ -6,18 +6,21 @@ Trigger all the rules since last epoch
 
 
 def endpoint ( event, context):
-    body = utils.get_body( event )
-    resp = handler ( body )
+    resp = handler ( {} )
     return utils.respond( 'Success', resp )
 
 
-def handler( body, timeslice = 15 * 60 ):
+def handler( body, timeslice = 5 * 60 ):
 
     current_time = utils.time_since_midnight()
     lower_time = current_time - timeslice
 
+    print( (lower_time, current_time) )
+
     items = utils.lookup_trigger( (lower_time, current_time) )
     cached_responces = {}
+
+    print(items)
 
     for item in items['Items']:
         rule = item['rule']

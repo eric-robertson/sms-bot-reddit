@@ -11,9 +11,10 @@ async function requestResults ( search, callback ) {
 }   
 
 function resultListing ( data, click ) {
-    let hour = ("" + Math.floor(data['trigger-time'] / ( 60 * 60))).padStart(2,'0')
-    let min = ("" + Math.floor((data['trigger-time'] % (60 * 60))/60)).padStart(2, '0')
-    
+    let d_min =  data['trigger-time'] - (new Date().getTimezoneOffset() * 60) ;
+
+    let hour = ("" + Math.floor(d_min / ( 60 * 60))).padStart(2,'0')
+    let min = ("" + Math.floor((d_min % (60 * 60))/60)).padStart(2, '0')
 
     let textContent = '';
     if (data.rule.type == 'reddit'){
