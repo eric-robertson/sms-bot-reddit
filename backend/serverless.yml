@@ -6,7 +6,17 @@ provider:
   name: aws
   runtime: python3.8
   lambdaHashingVersion: 20201221
-
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-east-1:783399423686:table/sms-ruletable-2"
+      
 package:
   exclude:
     - node_modules/**
@@ -22,22 +32,22 @@ custom:
 functions:
 
   createRule:
-    handler: endpoints/createRule.handler
+    handler: endpoints.createRule.endpoint
     events:
       - http: POST /createRule
 
   deleteRule:
-    handler: endpoints/deleteRule.handler
+    handler: endpoints.deleteRule.endpoint
     events:
       - http: POST /deleteRule
 
   lookupNumber:
-    handler: endpoints/lookupNumber.handler
+    handler: endpoints.lookupNumber.endpoint
     events:
       - http: POST /lookupNumber
 
   triggerRules:
-    handler: endpoints/triggerRules.handler
+    handler: endpoints.triggerRules.endpoint
     timeout: 700
     events:
       - schedule:

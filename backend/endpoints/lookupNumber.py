@@ -1,18 +1,20 @@
-from . import Utils
+from . import utils
 
 '''
 Looks for all rules associated with a given number
 '''
 
 def endpoint ( event, context):
-    body = Utils.get_body( event )
+    body = utils.get_body( event )
     resp = handler ( body )
-    return Utils.respond( 'Success', resp )
+    return utils.respond( 'Success', resp )
 
 
 def handler( body ):
-    items = Utils.lookup_number( body['phone'] )
-    return items['Items']
+    items = utils.lookup_number( body['phone'] )['Items']
+    for i in items:
+        i['trigger-time'] = int( i['trigger-time'] )
+    return items
 
 
     

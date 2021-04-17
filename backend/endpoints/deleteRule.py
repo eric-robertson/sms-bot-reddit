@@ -1,17 +1,17 @@
-from . import Utils
+from . import utils
 
 '''
 Removes a given rule from the system
 '''
 
 def endpoint ( event, context):
-    body = Utils.get_body( event )
+    body = utils.get_body( event )
     resp = handler ( body )
-    return Utils.respond( 'Success', resp )
+    return utils.respond( 'Success', resp )
 
 
 def handler( body ):
-    Utils.remove_rule( body['id'] )
+    utils.remove_rule( body['id'] )
 
 
     
