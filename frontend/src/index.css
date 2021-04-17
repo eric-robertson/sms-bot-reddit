@@ -23,7 +23,7 @@ code {
     transition: all ease-in-out 0.3s;
     outline: none;
     margin-bottom: 10px;
-    margin-top: 300px;
+    margin-top: 250px;
     border-bottom: 1px solid #41489c;
 }
 
@@ -89,4 +89,123 @@ code {
     font-size: 10px;
     text-align: center;
     margin: auto;
+}
+
+.phone-box {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.phone-box:hover{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.phone-box:focus{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.time-box{
+    width: 40px;
+    padding: 10px;
+    margin: 4px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+.time-box:hover{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.time-box:focus{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.dropdown {
+    border: none;
+    background: none;
+    padding: 10px;
+    outline: none;
+    height: 40px;
+}
+.dropdown:hover{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.dropdown:focus{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.textfield {
+    border: none;
+    background: none;
+    padding: 5px;
+    outline: none;
+    width: 500px;
+    border-bottom: 1px solid #41489c;
+    margin: 20px;
+    overflow-y: scroll;
+    height: 50px;
+
+}
+.textfield:hover{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+.textfield2 {
+    border: none;
+    background: none;
+    padding: 5px;
+    outline: none;
+    width: 200px;
+    border-bottom: 1px solid #41489c;
+    margin: 20px;
+    overflow-y: scroll;
+    height: 30px;
+    text-align: center;
+
+}
+.textfield2:hover{
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+button {
+
+    border: none;
+    background: none;
+    padding: 10px;
+    margin: 10px;
+    outline: none;
+    background: rgb(243, 243, 243);
+    border-radius: 3px;
+    transition: 0.3s ease-in-out all;
+}
+button:hover{
+    background: rgb(172, 199, 255);
+    cursor: pointer;
+}
+
+.switcher {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+img { 
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 50px;
 }

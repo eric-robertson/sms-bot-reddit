@@ -26,44 +26,46 @@ export default () => {
             payload
         })
 
-        console.log('New rule added')
+        alert( 'New rule added!' )
+        window.location.reload();
     }
 
     return (
-        <div style={{display: 'flex', flex: 1, flexDirection: 'column', alignItems: 'center', height: '100%'}}>
-            <label>
-                Phone number:
-                <input type="text" name="phoneNum" onChange={handleChange} />
-            </label>
-
-            <label>
-                <input type="text" name="hour" onChange={handleChange} />
+        <div style={{display: 'relative', paddingTop: 200, width: 600, margin: 'auto'}}>
+        <div style={{fontSize: 15, color: 'grey', marginTop: 40}}>
+            Enter a phone number and an aproximate time for message to be sent
+            </div>
+            <div>
+                <input className="phone-box" placeholder="Phone Number" type="text" name="phoneNum" onChange={handleChange} />
+                <input  className="time-box" type="text" name="hour" onChange={handleChange} placeholder='01' />
                 :
-                <input type="text" name="minute" onChange={handleChange} />
+                <input   className="time-box"type="text" name="minute" onChange={handleChange} placeholder='23'  />
 
-                <select name="isAM" id="dropdown" onChange={handleChange}>
+                <select className='dropdown' name="isAM" id="dropdown" onChange={handleChange}>
                     <option value={true}>AM</option>
                     <option value={false}>PM</option>
                 </select>
-            </label>
+            </div>
+            <div style={{fontSize: 15, color: 'grey', marginTop: 40}}>
+            Send either a raw message or the top post from a given subreddit
+            </div>
+            <div style={{margin: 20 }}>
+                <select className='dropdown' name="msgType" id="msgType" onChange={handleChange} >
+                    <option value="raw">Raw Message</option>
+                    <option value="reddit">Subreddit</option>
+                </select>
+            </div>
+            <div>
+                {state.msgType=='raw' ? 
+                    <textarea className='textfield' placeholder="Message to be sent" type="text" name="txtMsg" onChange={handleChange} />
+                    : <input  className='textfield2' placeholder="r/me_irl" type="text" name="txtMsg" onChange={handleChange} />
+                }
+            </div>
 
-            <select name="msgType" id="msgType" onChange={handleChange} >
-                <option value="raw">Raw Message</option>
-                <option value="reddit">Subreddit</option>
-            </select>
-
-            <label>
-                Msg Text/Subreddit
-                <input type="text" name="txtMsg" onChange={handleChange} />
-            </label>
-
-            <button onClick={submitForm}>
-                Submit
+            <button onClick={submitForm} className="button">
+                Create Rule!
             </button>
 
-            <span>
-                {JSON.stringify(state)}
-            </span>
         </div>
     )
 }

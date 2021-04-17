@@ -54,7 +54,6 @@ export default () => {
         requestResults(text, setResults )
     }
 
-    console.log(results)
 
     return <div>
         <input className={classes.join(' ')} placeholder="Lookup by phone-number" onChange={changeText} />

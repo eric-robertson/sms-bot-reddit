@@ -1,20 +1,24 @@
-import logo from './logo.svg'
 import './App.css'
 import { useState } from 'react'
 import Lookup from './Lookup'
 import AddPhone from './AddPhone'
 
 const App = () => {
-  const [lookupTab, setLookupTab] = useState(true)
+  const [lookupTab, setLookupTab] = useState(false)
 
   return (
     <div className="App">
-      <button onClick={() => setLookupTab(true)}>
-        Lookup Phone Rules
-      </button>
-      <button onClick={() => setLookupTab(false)}>
-        Add Phone Rules
-      </button>
+        <div className="switcher">
+            <button onClick={() => setLookupTab(true)}>
+                Edit Rules
+            </button>
+            <button onClick={() => setLookupTab(false)}>
+                Add Rules
+            </button>
+
+        </div>
+
+        <img src="logo.svg" />
 
       {lookupTab
         ? <Lookup />
